@@ -1,0 +1,8 @@
+{
+  "$class": "org.insurance.delay.CreateInsurancePolicy",
+  "insuree": "resource:org.insurance.delay.Insuree#john",
+  "insurer": "resource:org.insurance.delay.Insurer#safe",
+  "flightDesignator": "LH303",
+  "departureAirport": "MAD",
+  "departureDate": "2019-04-11T16:57:02.933Z"
+}

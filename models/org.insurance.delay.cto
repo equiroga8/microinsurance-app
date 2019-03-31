@@ -4,61 +4,57 @@ participant Insuree identified by insureeId {
   o String insureeId
   o String firstName
   o String lastName
-  --> Account account
+  o Double balance
 }
 
 participant Insurer identified by insurerId {
   o String insurerId
   o String name
-  --> Account account
+  o Double balance
 }
 
 participant Oracle identified by oracleId {
   o String oracleId
 }
 
-asset Account identified by accountId {
-  o String accountId
-  o Integer balance
-}
-
 asset InsurancePolicy identified by insurancePolicyId {
   o String insurancePolicyId
-  --> Account escrow
+  o Double escrow
   --> Insurer insurer
   --> Insuree insuree
-    o State policyState
-    o FlightDetails flightDetails
+  o State policyState
+  o FlightDetails flightDetails
 }
 
 concept FlightDetails {
   o FlightStatus flightStatus
-    o String flightDesignator
-    o DateTime departureDate
-    o String departureAirport
+  o String flightDesignator
+  o DateTime departureDate
+  o String departureAirport
 }
 
 
 enum FlightStatus {
   o Undefined
-    o Cancelled
-    o OnSchedule
-    o Delayed
-    o OnTime
+  o Cancelled
+  o OnSchedule
+  o Delayed
+  o OnTime
 }
 
 enum State {
   o Initiated
-    o Pending
-    o PaidToInsuree
-    o PaidToInsurer
-    o Cancelled
+  o Pending
+  o PaidToInsuree
+  o PaidToInsurer
+  o Cancelled
 }
 
-
-transaction AccountTransfer {
-  --> Account from
-  --> Account to
-  o Integer amount
+transaction CreateInsurancePolicy {
+  --> Insuree insuree
+  --> Insurer insurer
+  o String flightDesignator
+  o String departureAirport
+  o DateTime departureDate
 }
 
