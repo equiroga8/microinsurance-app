@@ -1,4 +1,4 @@
-namespace org.insurance.delay
+namespace org.insurance
 
 participant Insuree identified by insureeId {
   o String insureeId
@@ -15,10 +15,11 @@ participant Insurer identified by insurerId {
 
 participant Oracle identified by oracleId {
   o String oracleId
+  o String insuranceType
 }
 
-asset InsurancePolicy identified by insurancePolicyId {
-  o String insurancePolicyId
+asset DelayInsurancePolicy identified by delayInsurancePolicyId {
+  o String delayInsurancePolicyId
   o Double escrow
   --> Insurer insurer
   --> Insuree insuree
@@ -50,7 +51,21 @@ enum State {
   o Cancelled
 }
 
-transaction CreateInsurancePolicy {
+transaction CreateInsuree {
+  o String email
+  o String firstName
+  o String lastName
+}
+
+transaction CreateInsurer {
+  o String email
+    o String name
+}
+
+transaction CreateOracle {
+}
+
+transaction CreateDelayInsurancePolicy {
   --> Insuree insuree
   --> Insurer insurer
   o String flightDesignator
@@ -58,3 +73,7 @@ transaction CreateInsurancePolicy {
   o DateTime departureDate
 }
 
+transaction oracleFlightResponse {
+  o String flightResponseGroupId
+  o FlightStatus flightStatus
+}

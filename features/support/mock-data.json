@@ -1,8 +1,23 @@
 {
-  "$class": "org.insurance.delay.CreateInsurancePolicy",
-  "insuree": "resource:org.insurance.delay.Insuree#john",
-  "insurer": "resource:org.insurance.delay.Insurer#safe",
+  "$class": "org.insurance.CreateDelayInsurancePolicy",
+  "insuree": "resource:org.insurance.Insuree#john@jmail.com",
+  "insurer": "resource:org.insurance.Insurer#admin@safeflight.com",
   "flightDesignator": "LH303",
   "departureAirport": "MAD",
-  "departureDate": "2019-04-11T16:57:02.933Z"
+  "departureDate": "2019-04-16T18:42:11.941Z"
+}
+
+
+
+{
+  "$class": "org.insurance.CreateInsuree",
+  "email": "john@jmail.com",
+  "firstName": "John",
+  "lastName": "Doe"
+}
+
+{
+  "$class": "org.insurance.CreateInsurer",
+  "email": "admin@safeflight.com",
+  "name": "Safe Flight",
 }
