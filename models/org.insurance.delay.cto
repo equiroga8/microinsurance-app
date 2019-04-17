@@ -27,6 +27,11 @@ asset DelayInsurancePolicy identified by delayInsurancePolicyId {
   o FlightDetails flightDetails
 }
 
+asset FlightRecord identified by flightRecordId {
+ o String flightRecordId
+ o FlightStatus flightStatus 
+}
+
 concept FlightDetails {
   o FlightStatus flightStatus
   o String flightDesignator
@@ -73,7 +78,11 @@ transaction CreateDelayInsurancePolicy {
   o DateTime departureDate
 }
 
-transaction oracleFlightResponse {
-  o String flightResponseGroupId
-  o FlightStatus flightStatus
+transaction publishFlightRecord {
+  o String flightRecordId
+  o FlightStatus updatedFlightStatus
+}
+
+transaction AcceptDelayInsurancePolicy {
+  o String delayInsurancePolicyId
 }

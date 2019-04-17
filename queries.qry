@@ -1,0 +1,6 @@
+query selectOracleRecordsByFlightGroupId {
+	description: "Select al records produced by the oracle filtered by flightRecordGroupId"
+	statement: 
+		SELECT org.hyperledger.composer.system.HistorianRecord
+		WHERE (transactionType == "org.insurance.CreateDelayInsurancePolicy")
+}

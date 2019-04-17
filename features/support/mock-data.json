@@ -1,3 +1,4 @@
+// Delay Insurance Policy Asset
 {
   "$class": "org.insurance.CreateDelayInsurancePolicy",
   "insuree": "resource:org.insurance.Insuree#john@jmail.com",
@@ -8,7 +9,7 @@
 }
 
 
-
+//Insuree participant
 {
   "$class": "org.insurance.CreateInsuree",
   "email": "john@jmail.com",
@@ -16,8 +17,18 @@
   "lastName": "Doe"
 }
 
+
+// Insurer participant
 {
   "$class": "org.insurance.CreateInsurer",
   "email": "admin@safeflight.com",
-  "name": "Safe Flight",
+  "name": "Safe Flight"
+}
+
+
+// publish flight record
+{
+  "$class": "org.insurance.PublishFlightRecord",
+  "flightRecordId": "LH30320190416MAD",
+  "updatedFlightStatus": "OnSchedule"
 }
