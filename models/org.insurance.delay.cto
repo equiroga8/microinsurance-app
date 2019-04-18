@@ -41,19 +41,19 @@ concept FlightDetails {
 
 
 enum FlightStatus {
-  o Undefined
-  o Cancelled
-  o OnSchedule
-  o Delayed
-  o OnTime
+  o UNDEFINED
+  o CANCELLED
+  o ONSCHEDULE
+  o DELAYED
+  o ONTIME
 }
 
 enum State {
-  o Initiated
-  o Pending
-  o PaidToInsuree
-  o PaidToInsurer
-  o Cancelled
+  o INITIATED
+  o PENDING
+  o PAIDTOINSUREE
+  o PAIDTOINSURER
+  o CANCELLED
 }
 
 transaction CreateInsuree {
@@ -78,11 +78,19 @@ transaction CreateDelayInsurancePolicy {
   o DateTime departureDate
 }
 
-transaction publishFlightRecord {
+transaction PublishFlightRecord {
   o String flightRecordId
   o FlightStatus updatedFlightStatus
 }
 
 transaction AcceptDelayInsurancePolicy {
   o String delayInsurancePolicyId
+}
+
+transaction UpdateDelayInsurancePolicy {
+  o String delayInsurancePolicyId
+}
+
+event OracleQuery {
+  o String flightRecordId
 }

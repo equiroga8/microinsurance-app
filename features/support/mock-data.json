@@ -30,5 +30,12 @@
 {
   "$class": "org.insurance.PublishFlightRecord",
   "flightRecordId": "LH30320190416MAD",
-  "updatedFlightStatus": "OnSchedule"
+  "updatedFlightStatus": "ONSCHEDULE"
+}
+
+
+// Accept insurance policy
+{
+  "$class": "org.insurance.AcceptDelayInsurancePolicy",
+  "delayInsurancePolicyId": "SJ1555582644194"
 }
