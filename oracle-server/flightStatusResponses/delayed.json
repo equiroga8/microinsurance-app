@@ -1,0 +1,79 @@
+{
+    "FlightStatusResource": {
+        "Flights": {
+            "Flight": {
+                "Departure": {
+                    "AirportCode": "FRA",
+                    "ScheduledTimeLocal": {
+                        "DateTime": "2019-02-12T11:15"
+                    },
+                    "ScheduledTimeUTC": {
+                        "DateTime": "2019-02-12T10:15Z"
+                    },
+                    "ActualTimeLocal": {
+                        "DateTime": "2019-02-12T11:19"
+                    },
+                    "ActualTimeUTC": {
+                        "DateTime": "2019-02-12T10:19Z"
+                    },
+                    "TimeStatus": {
+                        "Code": "OT",
+                        "Definition": "Flight On Time"
+                    },
+                    "Terminal": {
+                        "Name": 1,
+                        "Gate": "B10"
+                    }
+                },
+                "Arrival": {
+                    "AirportCode": "ARN",
+                    "ScheduledTimeLocal": {
+                        "DateTime": "2019-02-12T13:25"
+                    },
+                    "ScheduledTimeUTC": {
+                        "DateTime": "2019-02-12T12:25Z"
+                    },
+                    "ActualTimeLocal": {
+                        "DateTime": "2019-02-12T13:45"
+                    },
+                    "ActualTimeUTC": {
+                        "DateTime": "2019-02-12T12:45Z"
+                    },
+                    "TimeStatus": {
+                        "Code": "DL",
+                        "Definition": "Flight Delayed"
+                    },
+                    "Terminal": {
+                        "Name": 5
+                    }
+                },
+                "MarketingCarrier": {
+                    "AirlineID": "LH",
+                    "FlightNumber": 802
+                },
+                "OperatingCarrier": {
+                    "AirlineID": "LH",
+                    "FlightNumber": 802
+                },
+                "Equipment": {
+                    "AircraftCode": 321
+                },
+                "FlightStatus": {
+                    "Code": "LD",
+                    "Definition": "Flight Landed"
+                },
+                "ServiceType": "Passenger"
+            }
+        },
+        "Meta": {
+            "@Version": "1.0.0",
+            "Link": [{
+                "@Href": "https:\/\/api.lufthansa.com\/v1\/operations\/flightstatus\/LH802\/2019-02-12",
+                "@Rel": "self"
+            }, {
+                "@Href": "https:\/\/api.lufthansa.com\/v1\/references\/airports\/{airportCode}",
+                "@Rel": "related"
+            }]
+        }
+    }
+}

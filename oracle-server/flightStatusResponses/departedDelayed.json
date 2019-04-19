@@ -1,0 +1,79 @@
+{
+    "FlightStatusResource": {
+        "Flights": {
+            "Flight": {
+                "Departure": {
+                    "AirportCode": "FRA",
+                    "ScheduledTimeLocal": {
+                        "DateTime": "2019-02-14T10:40"
+                    },
+                    "ScheduledTimeUTC": {
+                        "DateTime": "2019-02-14T09:40Z"
+                    },
+                    "ActualTimeLocal": {
+                        "DateTime": "2019-02-14T11:12"
+                    },
+                    "ActualTimeUTC": {
+                        "DateTime": "2019-02-14T10:12Z"
+                    },
+                    "TimeStatus": {
+                        "Code": "DL",
+                        "Definition": "Flight Delayed"
+                    },
+                    "Terminal": {
+                        "Name": 1,
+                        "Gate": "Z69"
+                    }
+                },
+                "Arrival": {
+                    "AirportCode": "ORD",
+                    "ScheduledTimeLocal": {
+                        "DateTime": "2019-02-14T13:05"
+                    },
+                    "ScheduledTimeUTC": {
+                        "DateTime": "2019-02-14T19:05Z"
+                    },
+                    "EstimatedTimeLocal": {
+                        "DateTime": "2019-02-14T13:44"
+                    },
+                    "EstimatedTimeUTC": {
+                        "DateTime": "2019-02-14T19:44Z"
+                    },
+                    "TimeStatus": {
+                        "Code": "DL",
+                        "Definition": "Flight Delayed"
+                    },
+                    "Terminal": {
+                        "Name": 5
+                    }
+                },
+                "MarketingCarrier": {
+                    "AirlineID": "LH",
+                    "FlightNumber": 430
+                },
+                "OperatingCarrier": {
+                    "AirlineID": "LH",
+                    "FlightNumber": 430
+                },
+                "Equipment": {
+                    "AircraftCode": "74H"
+                },
+                "FlightStatus": {
+                    "Code": "DP",
+                    "Definition": "Flight Departed"
+                },
+                "ServiceType": "Passenger"
+            }
+        },
+        "Meta": {
+            "@Version": "1.0.0",
+            "Link": [{
+                "@Href": "https:\/\/api.lufthansa.com\/v1\/operations\/flightstatus\/LH430\/2019-02-14",
+                "@Rel": "self"
+            }, {
+                "@Href": "https:\/\/api.lufthansa.com\/v1\/references\/airports\/{airportCode}",
+                "@Rel": "related"
+            }]
+        }
+    }
+}

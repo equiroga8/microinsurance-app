@@ -1,0 +1,68 @@
+{
+    "FlightStatusResource": {
+        "Flights": {
+            "Flight": {
+                "Departure": {
+                    "AirportCode": "FRA",
+                    "ScheduledTimeLocal": {
+                        "DateTime": "2019-02-15T09:50"
+                    },
+                    "ScheduledTimeUTC": {
+                        "DateTime": "2019-02-15T08:50Z"
+                    },
+                    "TimeStatus": {
+                        "Code": "OT",
+                        "Definition": "Flight On Time"
+                    },
+                    "Terminal": {
+                        "Name": 1,
+                        "Gate": "Z66"
+                    }
+                },
+                "Arrival": {
+                    "AirportCode": "IAH",
+                    "ScheduledTimeLocal": {
+                        "DateTime": "2019-02-15T14:05"
+                    },
+                    "ScheduledTimeUTC": {
+                        "DateTime": "2019-02-15T20:05Z"
+                    },
+                    "TimeStatus": {
+                        "Code": "OT",
+                        "Definition": "Flight On Time"
+                    },
+                    "Terminal": {
+                        "Name": "D",
+                        "Gate": "D09"
+                    }
+                },
+                "MarketingCarrier": {
+                    "AirlineID": "LH",
+                    "FlightNumber": 440
+                },
+                "OperatingCarrier": {
+                    "AirlineID": "LH",
+                    "FlightNumber": 440
+                },
+                "Equipment": {
+                    "AircraftCode": 388
+                },
+                "FlightStatus": {
+                    "Code": "NA",
+                    "Definition": "No status"
+                },
+                "ServiceType": "Passenger"
+            }
+        },
+        "Meta": {
+            "@Version": "1.0.0",
+            "Link": [{
+                "@Href": "https:\/\/api.lufthansa.com\/v1\/operations\/flightstatus\/LH440\/2019-02-15",
+                "@Rel": "self"
+            }, {
+                "@Href": "https:\/\/api.lufthansa.com\/v1\/references\/airports\/{airportCode}",
+                "@Rel": "related"
+            }]
+        }
+    }
+}

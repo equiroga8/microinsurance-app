@@ -1,0 +1,79 @@
+{
+    "FlightStatusResource": {
+        "Flights": {
+            "Flight": {
+                "Departure": {
+                    "AirportCode": "FRA",
+                    "ScheduledTimeLocal": {
+                        "DateTime": "2019-02-14T13:25"
+                    },
+                    "ScheduledTimeUTC": {
+                        "DateTime": "2019-02-14T12:25Z"
+                    },
+                    "ActualTimeLocal": {
+                        "DateTime": "2019-02-14T13:28"
+                    },
+                    "ActualTimeUTC": {
+                        "DateTime": "2019-02-14T12:28Z"
+                    },
+                    "TimeStatus": {
+                        "Code": "OT",
+                        "Definition": "Flight On Time"
+                    },
+                    "Terminal": {
+                        "Name": 1,
+                        "Gate": "Z58"
+                    }
+                },
+                "Arrival": {
+                    "AirportCode": "EWR",
+                    "ScheduledTimeLocal": {
+                        "DateTime": "2019-02-14T16:10"
+                    },
+                    "ScheduledTimeUTC": {
+                        "DateTime": "2019-02-14T21:10Z"
+                    },
+                    "EstimatedTimeLocal": {
+                        "DateTime": "2019-02-14T15:48"
+                    },
+                    "EstimatedTimeUTC": {
+                        "DateTime": "2019-02-14T20:48Z"
+                    },
+                    "TimeStatus": {
+                        "Code": "FE",
+                        "Definition": "Flight Early"
+                    },
+                    "Terminal": {
+                        "Name": "B"
+                    }
+                },
+                "MarketingCarrier": {
+                    "AirlineID": "LH",
+                    "FlightNumber": 402
+                },
+                "OperatingCarrier": {
+                    "AirlineID": "LH",
+                    "FlightNumber": 402
+                },
+                "Equipment": {
+                    "AircraftCode": "74H"
+                },
+                "FlightStatus": {
+                    "Code": "DP",
+                    "Definition": "Flight Departed"
+                },
+                "ServiceType": "Passenger"
+            }
+        },
+        "Meta": {
+            "@Version": "1.0.0",
+            "Link": [{
+                "@Href": "https:\/\/api.lufthansa.com\/v1\/operations\/flightstatus\/LH402\/2019-02-14",
+                "@Rel": "self"
+            }, {
+                "@Href": "https:\/\/api.lufthansa.com\/v1\/references\/airports\/{airportCode}",
+                "@Rel": "related"
+            }]
+        }
+    }
+}

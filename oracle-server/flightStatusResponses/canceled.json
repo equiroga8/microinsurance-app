@@ -1,0 +1,64 @@
+{
+    "FlightStatusResource": {
+        "Flights": {
+            "Flight": {
+                "Departure": {
+                    "AirportCode": "FRA",
+                    "ScheduledTimeLocal": {
+                        "DateTime": "2019-02-13T13:25"
+                    },
+                    "ScheduledTimeUTC": {
+                        "DateTime": "2019-02-13T12:25Z"
+                    },
+                    "TimeStatus": {
+                        "Code": "NO",
+                        "Definition": "No status"
+                    },
+                    "Terminal": {
+                        "Name": 1,
+                        "Gate": "A20"
+                    }
+                },
+                "Arrival": {
+                    "AirportCode": "BRU",
+                    "ScheduledTimeLocal": {
+                        "DateTime": "2019-02-13T14:25"
+                    },
+                    "ScheduledTimeUTC": {
+                        "DateTime": "2019-02-13T13:25Z"
+                    },
+                    "TimeStatus": {
+                        "Code": "NO",
+                        "Definition": "No status"
+                    }
+                },
+                "MarketingCarrier": {
+                    "AirlineID": "LH",
+                    "FlightNumber": 1012
+                },
+                "OperatingCarrier": {
+                    "AirlineID": "LH",
+                    "FlightNumber": 1012
+                },
+                "Equipment": {
+                    "AircraftCode": "32N"
+                },
+                "FlightStatus": {
+                    "Code": "CD",
+                    "Definition": "Flight Cancelled"
+                },
+                "ServiceType": "Passenger"
+            }
+        },
+        "Meta": {
+            "@Version": "1.0.0",
+            "Link": [{
+                "@Href": "https:\/\/api.lufthansa.com\/v1\/operations\/flightstatus\/LH1012\/2019-02-13",
+                "@Rel": "self"
+            }, {
+                "@Href": "https:\/\/api.lufthansa.com\/v1\/references\/airports\/{airportCode}",
+                "@Rel": "related"
+            }]
+        }
+    }
+}

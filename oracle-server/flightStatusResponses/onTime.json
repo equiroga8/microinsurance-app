@@ -1,0 +1,76 @@
+{
+    "FlightStatusResource": {
+        "Flights": {
+            "Flight": {
+                "Departure": {
+                    "AirportCode": "FRA",
+                    "ScheduledTimeLocal": {
+                        "DateTime": "2019-02-14T11:15"
+                    },
+                    "ScheduledTimeUTC": {
+                        "DateTime": "2019-02-14T10:15Z"
+                    },
+                    "ActualTimeLocal": {
+                        "DateTime": "2019-02-14T11:16"
+                    },
+                    "ActualTimeUTC": {
+                        "DateTime": "2019-02-14T10:16Z"
+                    },
+                    "TimeStatus": {
+                        "Code": "OT",
+                        "Definition": "Flight On Time"
+                    },
+                    "Terminal": {
+                        "Name": 1,
+                        "Gate": "A16"
+                    }
+                },
+                "Arrival": {
+                    "AirportCode": "NAP",
+                    "ScheduledTimeLocal": {
+                        "DateTime": "2019-02-14T13:10"
+                    },
+                    "ScheduledTimeUTC": {
+                        "DateTime": "2019-02-14T12:10Z"
+                    },
+                    "ActualTimeLocal": {
+                        "DateTime": "2019-02-14T13:14"
+                    },
+                    "ActualTimeUTC": {
+                        "DateTime": "2019-02-14T12:14Z"
+                    },
+                    "TimeStatus": {
+                        "Code": "OT",
+                        "Definition": "Flight On Time"
+                    }
+                },
+                "MarketingCarrier": {
+                    "AirlineID": "LH",
+                    "FlightNumber": 334
+                },
+                "OperatingCarrier": {
+                    "AirlineID": "LH",
+                    "FlightNumber": 334
+                },
+                "Equipment": {
+                    "AircraftCode": "32N"
+                },
+                "FlightStatus": {
+                    "Code": "LD",
+                    "Definition": "Flight Landed"
+                },
+                "ServiceType": "Passenger"
+            }
+        },
+        "Meta": {
+            "@Version": "1.0.0",
+            "Link": [{
+                "@Href": "https:\/\/api.lufthansa.com\/v1\/operations\/flightstatus\/LH334\/2019-02-14",
+                "@Rel": "self"
+            }, {
+                "@Href": "https:\/\/api.lufthansa.com\/v1\/references\/airports\/{airportCode}",
+                "@Rel": "related"
+            }]
+        }
+    }
+}
