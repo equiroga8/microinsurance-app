@@ -1,4 +1,3 @@
-## delay-insurance-network
 
 Flight delay insurance
 

@@ -1,0 +1,25 @@
+{
+  "name": "oracle-server",
+  "version": "1.0.0",
+  "description": "oracle that provides information for the insurance-network",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "edu",
+  "license": "ISC",
+  "dependencies": {
+    "browserfs": "^1.4.3",
+    "chalk": "^2.4.2",
+    "composer-admin": "^0.20.8",
+    "composer-cli": "^0.20.8",
+    "composer-client": "^0.20.8",
+    "composer-connector-embedded": "^0.20.8",
+    "config": "^3.1.0",
+    "dotenv": "^7.0.0",
+    "eslint": "^5.16.0",
+    "mkdirp": "^0.5.1",
+    "mocha": "^6.1.4",
+    "moment": "^2.24.0"
+  }
+}
