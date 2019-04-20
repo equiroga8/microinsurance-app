@@ -91,6 +91,14 @@ transaction UpdateDelayInsurancePolicy {
   o String delayInsurancePolicyId
 }
 
+transaction CallOracleQuery {
+  o String flightRecordId
+}
+
 event OracleQuery {
   o String flightRecordId
+}
+
+event FlightRecordUpdated {
+   o String flightRecordId
 }

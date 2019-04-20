@@ -19,7 +19,9 @@ var chalk = require('chalk');
 var request = require('request-promise');
 const util = require('util');
 
-class SitechainListener{
+const constants = require('./constants');
+
+class OracleListener{
 
 	constructor() {
 
@@ -65,25 +67,55 @@ class SitechainListener{
     }
   }
 
-  async getFlightStatus(flightDesignator, departureDate ) {
+  async getFlightStatus(flightDesignator, departureDate) {
+
+    let updatedFlightStatus;
 
     var getOptions = {
-          uri: 'https://api.lufthansa.com/v1/operations/flightstatus/' + flightDesignator + '/' + departureDate,
-          headers: {
-            'Authorization': 'Bearer ' + this.apiKey,
-            'Accept': 'application/json'
-          },
-          json: true 
-        };
-        try {
-          let response = await request(getOptions);
-          console.log(util.inspect(response, false, null, true));
-        } catch(error) {
-        console.log('ERROR: ' + error);
-        }
+      uri: 'https://api.lufthansa.com/v1/operations/flightstatus/' + flightDesignator + '/' + departureDate,
+      headers: {
+        'Authorization': 'Bearer mvy58stnrgek5tsj2gpwd52n', // + this.apiKey,
+        'Accept': 'application/json'
+      },
+      json: true
+    };
+    try {
+      let response = await request(getOptions);
+      console.log(response.FlightStatusResource.Flights.Flight);
+      updatedFlightStatus = this.parseResponse(response.FlightStatusResource.Flights.Flight);
+    } catch (error) {
+      console.log("No flight found with those parameters");
+      updatedFlightStatus = constants.UNDEFINED;
+    }
+
+    return updatedFlightStatus;
   }
 
-   splitFlightRecordId(flightRecordId) {
+  parseResponse(response) {
+
+    let flightStatus;
+
+    switch (response.FlightStatus.Code) {
+      case constants.FLIGHT_CANCELLED:
+        flightStatus = constants.CANCELLED;
+        break;
+      case constants.FLIGHT_LANDED:
+        flightStatus = response.Arrival.TimeStatus.Code === constants.FLIGHT_DELAYED 
+          ? constants.DELAYED : constants.ON_TIME;
+        break;
+      case constants.FLIGHT_REROUTED:
+        flightStatus = constants.DELAYED;
+        break;
+      default:
+        flightStatus = constants.ON_SCHEDULE;
+        break;            
+    }
+
+    return flightStatus;
+
+  }
+
+  splitFlightRecordId(flightRecordId) {
 
     var [flightDesignator] = flightRecordId.match(/[A-Z]{2}\d{3}/);
     var unformattedDate = flightRecordId.substr(5, 8);
@@ -93,36 +125,58 @@ class SitechainListener{
     
   }
 
+  async publishFlightRecord(flightRecordId, flightStatus){
 
-	/** Listen for the sale transaction events
-     	*/
+    var requestOptions = {
+        encoding: 'utf8',
+        uri: 'http://localhost:3000/api/PublishFlightRecord',
+        method: 'POST',
+        form: {
+            $class : 'org.insurance.PublishFlightRecord', 
+            flightRecordId: flightRecordId, 
+            updatedFlightStatus: flightStatus
+        },
+        json: true
+    };
+
+    
+    try {
+      let response = await request(requestOptions);
+      if (response.transactionId){
+        console.log(chalk.green.bold(`Flight record published with id ${flightRecordId} and ${flightStatus}`));
+      }
+      
+    } catch(error) {
+      console.log('ERROR: ' + error);
+    }
+
+  }
+
+
+	// Listen for OracleQuery events
+
   listen(){
     console.log(chalk.blue('Listening for OracleQuery events:'));
-    this.bizNetworkConnection.on('event',(evt)=>{
+    this.bizNetworkConnection.on('event', async (evt)=>{
       if (evt.flightRecordId) {
+        console.log(chalk.blue('-----------------------------------------------------------'));
         console.log('Oracle query event registered with flightRecordId: '+ chalk.blue(evt.flightRecordId));
 
-        let flightDetails = splitFlightRecordId(evt.flightRecordId);
+        let flightDetails = this.splitFlightRecordId(evt.flightRecordId);
 
         let { flightDesignator, departureDate } = flightDetails;
 
-        let response = getFlightStatus(flightDesignator, departureDate )
-              
+        let flightStatus =  await this.getFlightStatus(flightDesignator, departureDate);
+
+        await this.publishFlightRecord(evt.flightRecordId, flightStatus);            
       }
       
     });
   }
-
-
-
-
 }
 
 
 
-var lnr = new SitechainListener();
-lnr.init();
-lnr.getLHAccessToken();
-lnr.splitFlightRecordId('LH40420190422MAD');
-lnr.listen();
-lnr.getFlightStatus('LH404','2019-04-22' );
+var oracleListener = new OracleListener();
+oracleListener.init();
+oracleListener.listen();
