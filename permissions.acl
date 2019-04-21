@@ -12,9 +12,148 @@
  * limitations under the License.
  */
 
+// Permissions to listen to events?????? transactions??????
+
+// Insuree
+
+rule InsureeCanOnlyViewAndUpdateHimself {
+    description: "Insuree can only Read and Update his participant record"
+    participant(m): "org.insurance.Insuree"
+    operation: READ, UPDATE
+    resource(v): "org.insurance.Insuree"
+    condition: (v.getIdentifier() == m.getIdentifier())
+    action: ALLOW
+}
+
+rule InsureeCanAccessInsurers {
+    description: "Insuree can access the insurers"
+    participant: "org.insurance.Insuree"
+    operation: READ
+    resource: "org.insurance.Insurer"
+    action: ALLOW
+}
+
+rule InsureeCanReadFlightRecord {
+    description: "Insuree can read flight records"
+    participant: "org.insurance.Insuree"
+    operation: READ
+    resource: "org.insurance.FlightRecord"
+    action: ALLOW
+}
+
+rule InsureeCanAccessInsurerRegistry {
+    description: "Insuree can access the insurer participant registry"
+    participant: "org.insurance.Insuree"
+    operation: READ
+    resource: "org.hyperledger.composer.system.ParticipantRegistry#org.insurance.Insurer"
+    action: ALLOW
+}
+
+rule InsureeCanCreateAnInsurancePolicy {
+    description: "Insuree can create an insurance policy"
+    participant: "org.insurance.Insuree"
+    operation: CREATE
+    resource: "org.insurance.DelayInsurancePolicy"
+    action: ALLOW
+}
+
+rule InsureeCanCallOracleQuery {
+    description: "Insuree can call oracle query"
+    participant: "org.insurance.Insuree"
+    operation: ALL
+    resource: "org.insurance.CallOracleQuery"
+    action: ALLOW
+}
+
+rule InsureeCanAccessHisInsurancePolicies {
+    description: "Insuree can only access his insurance policies"
+    participant(m): "org.insurance.Insuree"
+    operation: READ, UPDATE
+    resource(v): "org.insurance.DelayInsurancePolicy"
+  condition: (v.insuree.getIdentifier() == m.getIdentifier())
+    action: ALLOW
+}
+
+rule InsureeCanCreateInsurancePolicy {
+    description: "Insuree can create a new insurance policy"
+    participant: "org.insurance.Insuree"
+    operation: ALL
+    resource: "org.insurance.CreateDelayInsurancePolicy"
+    action: ALLOW
+}
+
+rule InsureeCanUpdateFlightStatus {
+    description: "Insuree can update an insurance flight status"
+    participant: "org.insurance.Insuree"
+    operation: ALL
+    resource: "org.insurance.UpdateFlightStatus"
+    action: ALLOW
+}
+
+rule InsureeCanUpdateDelayInsurancePolicy {
+    description: "Insuree can update an insurance policy"
+    participant: "org.insurance.Insuree"
+    operation: ALL
+    resource: "org.insurance.UpdateDelayInsurancePolicy"
+    action: ALLOW
+}
+
+
+//Insurer
+
+rule InsurerCanOnlyViewAndUpdateHimself {
+    description: "Insurer can only Read and Update his participant record"
+    participant(m): "org.insurance.Insurer"
+    operation: READ, UPDATE
+    resource(v): "org.insurance.Insurer"
+    condition: (v.getIdentifier() == m.getIdentifier())
+    action: ALLOW
+}
+
+rule InsurerCanAccessHisInsurancePolicies {
+    description: "Insurer can only access his insurance policies"
+    participant(m): "org.insurance.Insurer"
+    operation: READ, UPDATE
+    resource(v): "org.insurance.DelayInsurancePolicy"
+  condition: (v.insurer.getIdentifier() == m.getIdentifier())
+    action: ALLOW
+}
+
+rule InsurerCanAcceptADelayInsurancePolicy {
+    description: "Insurer can accept an insurance policy"
+    participant: "org.insurance.Insurer"
+    operation: ALL
+    resource: "org.insurance.AcceptDelayInsurancePolicy"
+    action: ALLOW
+}
+
+rule InsurerCanReadFlightRecord {
+    description: "Insurer can read flight records"
+    participant: "org.insurance.Insurer"
+    operation: READ
+    resource: "org.insurance.FlightRecord"
+    action: ALLOW
+}
+
+rule InsurerCanCallOracleQuery {
+    description: "Insurer can call OracleQuery"
+    participant: "org.insurance.Insurer"
+    operation: ALL
+    resource: "org.insurance.CallOracleQuery"
+    action: ALLOW
+}
+
+rule InsurerCanUpdateFlightStatus {
+    description: "Insurer can update an insurance flight status"
+    participant: "org.insurance.Insurer"
+    operation: ALL
+    resource: "org.insurance.UpdateFlightStatus"
+    action: ALLOW
+}
+
 //Oracle
 
-rule OracleOperateOnFLightRecords {
+rule OracleCanAccessFlightRecords {
     description: "Oracle can do everything on flight records except delete them"
     participant: "org.insurance.Oracle"
     operation: READ, UPDATE, CREATE
@@ -22,7 +161,7 @@ rule OracleOperateOnFLightRecords {
     action: ALLOW
 }
 
-rule OracleCanOnlyPublishFlightRecords  {
+rule OracleCanPublishFlightRecords  {
     description: "Oracle can only execute PublishFlightRecord transaction"
     participant: "org.insurance.Oracle"
     operation: ALL
@@ -48,8 +187,10 @@ rule NetworkAdminSystem {
     action: ALLOW
 }
 
+// General
+
 rule NetworkACL {
-  description:  "System ACL to permit all access"
+  description:  "System wide ACL to permit access to the network"
   participant: "ANY"
   operation: ALL
   resource: "org.hyperledger.composer.system.Network"
@@ -57,11 +198,34 @@ rule NetworkACL {
 }
 
 rule AssetACL {
-  description:  "System ACL to permit all access"
+  description:  "System wide ACL to permit access to the Asset Registry"
   participant: "ANY"
   operation: ALL
   resource: "org.hyperledger.composer.system.AssetRegistry"
   action: ALLOW
 }
 
-//Transaction registry
+rule RegistryTransactionACL {
+  description:  "System wide ACL to permit access to the Registry Transaction"
+  participant: "ANY"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.RegistryTransaction"
+  action: ALLOW
+}
+
+rule TransactionRegistryACL {
+  description:  "System wide ACL to permit access to the Transaction Registry"
+  participant: "ANY"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.TransactionRegistry"
+  action: ALLOW
+}
+
+rule HistorianRecordACL {
+  description:  "System wide ACL to permit access to the Historian Record"
+  participant: "ANY"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.HistorianRecord"
+  action: ALLOW
+}
+
