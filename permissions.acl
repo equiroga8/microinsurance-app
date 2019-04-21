@@ -12,6 +12,26 @@
  * limitations under the License.
  */
 
+//Oracle
+
+rule OracleOperateOnFLightRecords {
+    description: "Oracle can do everything on flight records except delete them"
+    participant: "org.insurance.Oracle"
+    operation: READ, UPDATE, CREATE
+    resource: "org.insurance.FlightRecord"
+    action: ALLOW
+}
+
+rule OracleCanOnlyPublishFlightRecords  {
+    description: "Oracle can only execute PublishFlightRecord transaction"
+    participant: "org.insurance.Oracle"
+    operation: ALL
+    resource: "org.insurance.PublishFlightRecord"
+    action: ALLOW
+}
+
+// Network Admin
+
 rule NetworkAdminUser {
     description: "Grant business network administrators full access to user resources"
     participant: "org.hyperledger.composer.system.NetworkAdmin"
@@ -28,18 +48,20 @@ rule NetworkAdminSystem {
     action: ALLOW
 }
 
-rule Default {
-    description: "Allow all participants access to all resources"
-    participant: "ANY"
-    operation: ALL
-    resource: "org.insurance.*"
-    action: ALLOW
-}
-
-rule SystemACL {
+rule NetworkACL {
   description:  "System ACL to permit all access"
   participant: "ANY"
   operation: ALL
-  resource: "org.hyperledger.composer.system.**"
+  resource: "org.hyperledger.composer.system.Network"
   action: ALLOW
 }
+
+rule AssetACL {
+  description:  "System ACL to permit all access"
+  participant: "ANY"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.AssetRegistry"
+  action: ALLOW
+}
+
+//Transaction registry

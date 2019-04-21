@@ -95,10 +95,14 @@ transaction CallOracleQuery {
   o String flightRecordId
 }
 
+transaction UpdateFLightStatus {
+  o String delayInsurancePolicyId
+}
+
 event OracleQuery {
   o String flightRecordId
 }
 
 event FlightRecordUpdated {
-   o String flightRecordId
+  o String flightRecordId
 }
