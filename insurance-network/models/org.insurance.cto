@@ -95,7 +95,7 @@ transaction CallOracleQuery {
   o String flightRecordId
 }
 
-transaction UpdateFLightStatus {
+transaction UpdateFlightStatus {
   o String delayInsurancePolicyId
 }
 

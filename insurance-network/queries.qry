@@ -1,0 +1,13 @@
+query selectInsureeDelayInsurancePolicies {
+	description: "Select all DelayInsurancePolicies that belong to a certain insuree"
+	statement: 
+		SELECT org.insurance.DelayInsurancePolicy
+		WHERE (insuree == _$insureeId)
+}
+
+query selectInsurerDelayInsurancePolicies {
+	description: "Select all DelayInsurancePolicies that belong to a certain insurer"
+	statement: 
+		SELECT org.insurance.DelayInsurancePolicy
+		WHERE (insurer == _$insureeId)
+}
