@@ -1,26 +1,51 @@
 import React from 'react';
-import { Typography, Grid, TextField, FormControlLabel, Checkbox } from '@material-ui/core/';
+import { Typography, Grid, TextField, FormControlLabel, FormControl, Select, MenuItem, FormHelperText, InputLabel } from '@material-ui/core/';
+import { MuiPickersUtilsProvider, InlineDatePicker } from "material-ui-pickers";
+import DateFnsUtils from '@date-io/date-fns';
+import {airports} from '../assets/mock-data';
 
-function PolicyInputs() {
+function PolicyInputs(props) {
   return (
     <React.Fragment>
-      	<Typography variant="h6" gutterBottom>
-        	Payment method
-      </Typography>
-      <Grid container spacing={24}>
-        <Grid item xs={12} xs={6}>
-          <TextField required id="cardName" label="Flight designator"  />
-        </Grid>
-        <Grid item xs={12} xs={6}>
-          <TextField required id="cardNumber" label="Departure date"  />
-        </Grid>
-        <Grid item xs={12} xs={6}>
-          <TextField required id="expDate" label="Departure airport" />
-        </Grid>
-        <Grid item xs={12} xs={6}>
-         <Typography> Premium: $50</Typography>
-        </Grid>
-      </Grid>
+			<FormControl>
+	          	<TextField required id="flight-designator" label="Flight designator" autoComplete="no" />
+			</FormControl>
+			    <div className="picker">
+			    	<MuiPickersUtilsProvider utils={DateFnsUtils}>
+        				<InlineDatePicker
+					        keyboard
+					        clearable
+					        variant="outlined"
+					        label="With keyboard"
+					        value={new Date()}
+					        onChange={console.log}					        
+       						mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
+        				/>
+       				 </MuiPickersUtilsProvider>
+      			</div>
+
+	      	<FormControl required>
+      			<InputLabel htmlFor="age-required">Departure airport</InputLabel>
+	          	<Select
+	            	value={"Madrid"}
+	            	onChange={console.log}
+	            	name="departureAirport"
+	            	inputProps={{
+	              		id: 'age-required',
+	            	}}
+	          	>
+	          		<MenuItem value=""><em>None</em></MenuItem>
+	          		{
+	          			airports.map((airport, index) => {
+							return <MenuItem key={index} value={airport.code}>{airport.name}</MenuItem>
+	          			})
+	          		}
+     			</Select>
+      			<FormHelperText>Required</FormHelperText>
+        	</FormControl>
+	        <FormControl>
+	         	<Typography> Premium: $50</Typography>
+	        </FormControl>
     </React.Fragment>
   );
 }
