@@ -1,0 +1,85 @@
+
+#policy-form-border {
+
+	border:10px;
+	border-color: black;
+
+}
+
+/*APP*/
+#policy-form {
+	display: grid;
+	grid-template-columns: 250px 250px 250px;
+	grid-template-rows: 60px 100px 60px;
+	grid-template-areas: 
+		"cph cpt info-premium"
+		" fii fii fii"
+		". . cpb";
+	justify-content: center;
+	padding: 50px;
+	border: 1px solid black; 
+	border-radius: 25px;	
+
+}
+
+/*Policy Form*/
+#create-policy-header {
+	grid-area: cph;
+	justify-self: start;
+	align-self: center;
+	padding-left: 10px;
+}
+
+#input-select{
+	grid-area: cpt;
+	place-self: center;
+	justify-self: stretch;
+	padding-left: 7px;
+	padding-right: 9px;
+}
+
+#create-policy-button{
+	grid-area: cpb;
+	align-self: center;
+}
+
+#form-inputs-item{
+	grid-area: fii;
+	justify-self: stretch;
+	align-self: center;
+}
+
+#info-premium{
+	grid-area: info-premium;
+	place-self: center;
+	padding-top: 7px;
+	padding-left: 2px;
+}
+
+#form-inputs-container{
+	display: grid;
+	grid-template-columns: 33% 34% 33%;
+	grid-template-rows: auto;
+	grid-template-areas: 
+		"fdi date-input dai";
+}
+#flight-designator-input{
+	grid-area: fdi;
+	place-self: center;
+}
+
+#date-input{
+	grid-area: date-input;
+	place-self: center;
+	padding-left: 10px;
+	padding-right: 10px;
+
+}
+
+#departure-airport-input{
+	grid-area: dai;
+	align-self: center;
+	padding-bottom: 9px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
