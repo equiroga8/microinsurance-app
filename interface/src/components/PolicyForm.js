@@ -8,7 +8,7 @@ import { unstable_Box as Box } from '@material-ui/core/Box';
 function PolicyForm() {
   return (
        
-        <div id= "policy-form" >
+        <Card id= "policy-form" >
 			<Header title= "Create a new insurance policy:" idIs="create-policy-header"/>
 			<PolicyType id="create-policy-type"/>
 			<PolicyInputs/>
@@ -23,7 +23,7 @@ function PolicyForm() {
 			 	label="Premium: $50" 
 			 	autoComplete="no">  </TextField>
 			</div>
-	     </div>
+	     </Card>
         
   );
 }

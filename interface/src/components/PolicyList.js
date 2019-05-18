@@ -1,22 +1,28 @@
 import React from 'react';
 import Header from './Header';
-import { Typography, Grid, Paper, GridList } from '@material-ui/core/';
+import { Typography, Grid, Paper, GridList, GridListTile, ListSubheader } from '@material-ui/core/';
 import PolicyCard from './PolicyCard';
 
 function PolicyList(props) {
   return (
-  	<Paper>
-  		<Grid container justify='center' alignItems='center'>
-  		<Grid item>
-	  	 	<Header title={props.headerTitle} />
-	        <GridList justify='center'>
+  	<div id={props.idIs}>
+	  	 	
+	        <GridList spacing={24} cols={1} id="policylist">
+	         <GridListTile key="Subheader" style={{ height: 'auto' }}>
+          		<Header title={props.headerTitle} />
+        	</GridListTile>
 	          {props.policyList.map((policy, index) => {
-	          	return <PolicyCard key={index} policy={policy}/>
+	          	return <GridListTile key={index} style={{ height: 'auto', width: '424px'}}>
+	          	 <PolicyCard 
+	          	 	key={index} 
+	          	 	policy={policy}
+	          	 	buttonDisabled={props.buttonDisabled} 
+	          	 	reloadDisabled={props.reloadDisabled}
+	          	 	/> 
+	          	</GridListTile>
 	          })}
 	        </GridList>
-	        </Grid>
-        </Grid>
-    </Paper>    
+    </div>    
   );
 }
 

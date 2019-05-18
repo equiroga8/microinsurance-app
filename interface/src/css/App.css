@@ -1,12 +1,34 @@
 
-#policy-form-border {
-
-	border:10px;
-	border-color: black;
+/*APP*/
+#app-container {
+	display: grid;
+	grid-template-columns: 16% 17% 17% 17% 17% 16%;
+	grid-template-rows: 350px auto;
+	grid-template-areas: 
+		". cfi cfi cfi cfi ."
+		" pl-pending pl-pending pl-ongoing pl-ongoing pl-finished pl-finished";
+	padding:40px;
 
 }
 
-/*APP*/
+#create-form-item{
+	grid-area: cfi;
+}
+
+#pl-pending {
+	grid-area: pl-pending;
+	justify-self: center;
+}
+
+#pl-ongoing {
+	grid-area: pl-ongoing;
+}
+
+#pl-finished {
+	grid-area: pl-finished;
+}
+
+
 #policy-form {
 	display: grid;
 	grid-template-columns: 250px 250px 250px;
@@ -17,8 +39,6 @@
 		". . cpb";
 	justify-content: center;
 	padding: 50px;
-	border: 1px solid black; 
-	border-radius: 25px;	
 
 }
 
@@ -82,4 +102,59 @@
 	padding-bottom: 9px;
 	padding-left: 10px;
 	padding-right: 10px;
+}
+
+/*Card*/
+
+.card-container{
+	display: grid;
+	grid-template-columns: 220px 180px;
+	grid-template-rows: 360px 50px 10px;
+	grid-template-areas: 
+		"card-content card-content"
+		". card-actions"
+		". .";
+		
+
+}
+
+.card-content{
+	grid-area: card-content;
+	place-self: center;
+
+}
+
+.card-actions{
+	grid-area: card-actions;
+	align-self: start
+}
+
+.card-content-container{
+	display: grid;
+	grid-template-columns: 300px 60px;
+	grid-template-rows: 50px 300px;
+	grid-template-areas: 
+		"header-id reload"
+		"info-table info-table"
+	
+}
+
+.header-id{
+	grid-area: header-id;
+	align-self: center;
+}
+
+.reload {
+	grid-area: reload;
+	place-self: center;
+}
+
+.info-table{
+	grid-area: info-table;
+
+}
+
+#policylist {
+	display: flex;
+    justify-content: center;
 }

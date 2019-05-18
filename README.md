@@ -7,10 +7,10 @@ Flight delay insurance
 docker logs -f dev-peer0.org1.example.com-delay-insurance-network-0.16.2 2>&1 | grep @debug
 
 - __Install business network:__
-composer network install --card PeerAdmin@hlfv1 --archiveFile insurance-network@0.0.2.bna
+composer network install --card PeerAdmin@hlfv1 --archiveFile insurance-network@0.0.5.bna
 
 - __Start business network:__
-composer network start --networkName insurance-network --networkVersion 0.0.2 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
+composer network start --networkName insurance-network --networkVersion 0.0.5 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
 
 - __Import network administrator card:__
 composer card import --file networkadmin.card

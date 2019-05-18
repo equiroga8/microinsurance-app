@@ -4,32 +4,32 @@ import PolicyList from './PolicyList';
 import { Typography, Grid, Paper } from '@material-ui/core/';
 import {mockInsureePolicies} from '../assets/mock-data';
 
-function getPoliciesByStatus(status){ //Optimize method
+function getPoliciesByStatus(statuses){ //Optimize method
   let policyList = [];
   for(let policy of mockInsureePolicies){
+    for(let status of statuses){
     if (policy.policyState === status) {
       policyList.push(policy);
     }
+  }
   }
   return policyList;
 }
 
 function InsureeContent() {
   return (
-    <Grid container spacing={8}>
-      <Grid item xs={8}>
-       <PolicyForm />
-      </Grid>
-      <Grid item xs={4}>
-        <PolicyList headerTitle="Pending" policyList={getPoliciesByStatus("INITIATED")}/>
-      </Grid>
-      <Grid item xs={4}>
-        <PolicyList headerTitle="On going" policyList={getPoliciesByStatus("PENDING")}/>
-      </Grid>
-      <Grid item xs={4}>
-        <PolicyList headerTitle="Finished" policyList={getPoliciesByStatus("CANCELLED")}/>
-      </Grid>
-    </Grid>
+      <div id="app-container"> 
+        <div id="create-form-item"> 
+        <PolicyForm />
+        </div>
+
+        <PolicyList idIs="pl-pending" headerTitle="Pending" policyList={getPoliciesByStatus(["INITIATED"])} buttonDisabled={true} reloadDisabled={false}/>
+   
+        <PolicyList idIs="pl-ongoing" headerTitle="On going" policyList={getPoliciesByStatus(["PENDING"])} buttonDisabled={false} reloadDisabled={false}/>
+        
+        <PolicyList idIs="pl-finished" headerTitle="Finished" policyList={getPoliciesByStatus(["CANCELLED","PAIDTOINSUREE", "PAIDTOINSURER"])} buttonDisabled={true} reloadDisabled={true}/>
+
+    </div>      
   );
 }
 
