@@ -18,6 +18,7 @@ function PolicyList(props) {
 	          	 	policy={policy}
 	          	 	buttonDisabled={props.buttonDisabled} 
 	          	 	reloadDisabled={props.reloadDisabled}
+	          	 	buttonText={props.buttonText}
 	          	 	/> 
 	          	</GridListTile>
 	          })}

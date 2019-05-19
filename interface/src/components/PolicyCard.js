@@ -48,7 +48,7 @@ function PolicyCard(props) {
     	</CardContent>
       	<CardActions className="card-actions">
        	  <Button size="medium" color="primary" variant="contained" disabled={props.buttonDisabled}>
-          		Finalize policy
+          		{props.buttonText}
         	</Button>
       	</CardActions>
     </div>    

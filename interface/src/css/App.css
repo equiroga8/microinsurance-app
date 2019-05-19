@@ -3,9 +3,10 @@
 #app-container {
 	display: grid;
 	grid-template-columns: 16% 17% 17% 17% 17% 16%;
-	grid-template-rows: 350px auto;
+	grid-template-rows: auto 20px auto;
 	grid-template-areas: 
 		". cfi cfi cfi cfi ."
+		". . . . . ."
 		" pl-pending pl-pending pl-ongoing pl-ongoing pl-finished pl-finished";
 	padding:40px;
 
@@ -157,4 +158,32 @@
 #policylist {
 	display: flex;
     justify-content: center;
+}
+
+.app-toolbar {
+	display: grid;
+	grid-template-columns: 25% 100px 600px 150px 25%;
+	grid-template-rows: 30px 30px;
+	grid-template-areas: 
+		". logo app-title participant ."
+		". logo app-title balance .";
+	
+	align-items: center;
+}
+
+.logo{
+	grid-area: logo;
+}
+
+.app-title{
+	grid-area: app-title;
+	justify-content: start
+}
+
+.participant {
+	grid-area: participant
+}
+
+.balance {
+	grid-area: balance;
 }

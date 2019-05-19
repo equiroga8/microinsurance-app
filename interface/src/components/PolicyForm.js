@@ -19,8 +19,8 @@ function PolicyForm() {
 			 <TextField  
 			 	variant="outlined" 
 			 	disabled
-			 	placeHolder="Premium $50"
-			 	label="Premium: $50" 
+			 	placeholder="Premium $10"
+			 	label="Premium: $10" 
 			 	autoComplete="no">  </TextField>
 			</div>
 	     </Card>

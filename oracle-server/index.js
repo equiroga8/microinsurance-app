@@ -168,7 +168,9 @@ class OracleListener{
 
         let flightStatus =  await this.getFlightStatus(flightDesignator, departureDate);
 
-        await this.publishFlightRecord(evt.flightRecordId, flightStatus);            
+        await this.publishFlightRecord(evt.flightRecordId, flightStatus);
+        
+        console.log('Oracle query event registered with flightRecordId: '+ chalk.blue(evt.flightRecordId));            
       }
       
     });
