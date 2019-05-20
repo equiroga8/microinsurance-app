@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Typography, Grid, TextField, FormControlLabel, FormControl, MenuItem, FormHelperText, InputLabel, OutlinedInput } from '@material-ui/core/';
 import { MuiPickersUtilsProvider, InlineDatePicker } from "material-ui-pickers";
 import DateFnsUtils from '@date-io/date-fns';
-import {airports} from '../assets/mock-data';
+import {airports, mockInsurers} from '../assets/mock-data';
 
 function PolicyInputs(props) {
 	let date = new Date();

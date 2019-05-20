@@ -20,11 +20,11 @@ function InsurerContent() {
   return (
       <div id="app-container"> 
 
-        <PolicyList idIs="pl-pending" headerTitle="Not accepted" policyList={getPoliciesByStatus(["INITIATED"])} buttonDisabled={false} reloadDisabled={false} buttonText="Accept"/>
+        <PolicyList idIs="pl-pending" headerTitle="Not accepted" policyList={getPoliciesByStatus(["INITIATED"])} buttonDisabled={false} reloadDisabled={false} buttonText="Accept policy"/>
    
-        <PolicyList idIs="pl-ongoing" headerTitle="On going" policyList={getPoliciesByStatus(["PENDING"])} buttonDisabled={false} reloadDisabled={false} buttonText="Finalize"/>
+        <PolicyList idIs="pl-ongoing" headerTitle="On going" policyList={getPoliciesByStatus(["PENDING"])} buttonDisabled={false} reloadDisabled={false} buttonText="Finalize policy"/>
         
-        <PolicyList idIs="pl-finished" headerTitle="Finished" policyList={getPoliciesByStatus(["CANCELLED","PAIDTOINSUREE", "PAIDTOINSURER"])} buttonDisabled={true} reloadDisabled={true} buttonText="-"/>
+        <PolicyList idIs="pl-finished" headerTitle="Finished" policyList={getPoliciesByStatus(["CANCELLED","PAIDTOINSUREE", "PAIDTOINSURER"])} buttonDisabled={true} reloadDisabled={true} buttonText="Finalize policy"/>
 
     </div>      
   );

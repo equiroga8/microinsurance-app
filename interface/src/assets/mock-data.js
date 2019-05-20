@@ -382,3 +382,26 @@ export const mockInsurer = [{
   "name": "Safe Flight",
   "balance": 540
   }];    
+
+export const mockInsurers = [
+{
+  "$class": "org.insurance.Insurer",
+  "insurerId": "admin@safeflight.com",
+  "name": "Safe Flight",
+  "balance": 500
+},
+{
+  "$class": "org.insurance.Insurer",
+  "insurerId": "admin@micropolicies.com",
+  "name": "MicroPolicies",
+  "balance": 510
+},
+{
+  "$class": "org.insurance.Insurer",
+  "insurerId": "admin@redcross.com",
+  "name": "Red Cross",
+  "balance": 540
+}
+
+
+];      

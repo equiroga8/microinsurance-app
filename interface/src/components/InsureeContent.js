@@ -23,11 +23,11 @@ function InsureeContent() {
         <PolicyForm />
         </div>
 
-        <PolicyList idIs="pl-pending" headerTitle="Pending" policyList={getPoliciesByStatus(["INITIATED"])} buttonDisabled={true} reloadDisabled={false} buttonText="-"/>
+        <PolicyList idIs="pl-pending" headerTitle="Pending" policyList={getPoliciesByStatus(["INITIATED"])} buttonDisabled={true} reloadDisabled={false} buttonText="Policy pending"/>
    
-        <PolicyList idIs="pl-ongoing" headerTitle="On going" policyList={getPoliciesByStatus(["PENDING"])} buttonDisabled={false} reloadDisabled={false} buttonText="Finalize"/>
+        <PolicyList idIs="pl-ongoing" headerTitle="On going" policyList={getPoliciesByStatus(["PENDING"])} buttonDisabled={false} reloadDisabled={false} buttonText="Finalize Policy"/>
         
-        <PolicyList idIs="pl-finished" headerTitle="Finished" policyList={getPoliciesByStatus(["CANCELLED","PAIDTOINSUREE", "PAIDTOINSURER"])} buttonDisabled={true} reloadDisabled={true} buttonText="-"/>
+        <PolicyList idIs="pl-finished" headerTitle="Finished" policyList={getPoliciesByStatus(["CANCELLED","PAIDTOINSUREE", "PAIDTOINSURER"])} buttonDisabled={true} reloadDisabled={true} buttonText="Finalize policy"/>
 
     </div>      
   );
