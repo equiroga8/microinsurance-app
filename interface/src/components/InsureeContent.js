@@ -16,18 +16,18 @@ function getPoliciesByStatus(statuses){ //Optimize method
   return policyList;
 }
 
-function InsureeContent() {
+function InsureeContent(props) {
   return (
       <div id="app-container"> 
         <div id="create-form-item"> 
         <PolicyForm />
         </div>
 
-        <PolicyList idIs="pl-pending" headerTitle="Pending" policyList={getPoliciesByStatus(["INITIATED"])} buttonDisabled={true} reloadDisabled={false} buttonText="Policy pending"/>
+        <PolicyList idIs="pl-pending" headerTitle="Pending" policyList={getPoliciesByStatus(["INITIATED"])} buttonDisabled={true} reloadDisabled={false} buttonText="Policy pending" isInsurer={props.isInsurer}/>
    
-        <PolicyList idIs="pl-ongoing" headerTitle="On going" policyList={getPoliciesByStatus(["PENDING"])} buttonDisabled={false} reloadDisabled={false} buttonText="Finalize Policy"/>
+        <PolicyList idIs="pl-ongoing" headerTitle="On going" policyList={getPoliciesByStatus(["PENDING"])} buttonDisabled={false} reloadDisabled={false} buttonText="Finalize Policy" isInsurer={props.isInsurer}/>
         
-        <PolicyList idIs="pl-finished" headerTitle="Finished" policyList={getPoliciesByStatus(["CANCELLED","PAIDTOINSUREE", "PAIDTOINSURER"])} buttonDisabled={true} reloadDisabled={true} buttonText="Finalize policy"/>
+        <PolicyList idIs="pl-finished" headerTitle="Finished" policyList={getPoliciesByStatus(["CANCELLED","PAIDTOINSUREE", "PAIDTOINSURER"])} buttonDisabled={true} reloadDisabled={true} buttonText="Finalize policy" isInsurer={props.isInsurer} buttonText={false} />
 
     </div>      
   );

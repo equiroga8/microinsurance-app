@@ -19,6 +19,7 @@ function PolicyList(props) {
 	          	 	buttonDisabled={props.buttonDisabled} 
 	          	 	reloadDisabled={props.reloadDisabled}
 	          	 	buttonText={props.buttonText}
+	          	 	isInsurer={props.isInsurer}
 	          	 	/> 
 	          	</GridListTile>
 	          })}

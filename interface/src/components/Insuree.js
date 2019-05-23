@@ -23,7 +23,7 @@ function Insuree() {
               </div>
         	</Toolbar>
      	</AppBar>
-     	<InsureeContent />	
+     	<InsureeContent isInsurer={false}/>	
     </div>
   );
 }

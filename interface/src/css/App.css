@@ -8,7 +8,7 @@
 		". cfi cfi cfi cfi ."
 		". . . . . ."
 		" pl-pending pl-pending pl-ongoing pl-ongoing pl-finished pl-finished";
-	padding:40px;
+	padding:10px;
 
 }
 
@@ -117,8 +117,8 @@
 
 .card-container{
 	display: grid;
-	grid-template-columns: 220px 180px;
-	grid-template-rows: 360px 50px 10px;
+	grid-template-columns: 180px 220px;
+	grid-template-rows: 410px 50px 10px;
 	grid-template-areas: 
 		"card-content card-content"
 		". card-actions"
@@ -130,12 +130,13 @@
 .card-content{
 	grid-area: card-content;
 	place-self: center;
+	align-self: start;
 
 }
 
 .card-actions{
 	grid-area: card-actions;
-	align-self: start
+	justify-self: center;
 }
 
 .card-content-container{
