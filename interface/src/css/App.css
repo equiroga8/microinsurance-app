@@ -23,10 +23,12 @@
 
 #pl-ongoing {
 	grid-area: pl-ongoing;
+	justify-self: center;
 }
 
 #pl-finished {
 	grid-area: pl-finished;
+	justify-self: center;
 }
 
 
@@ -69,6 +71,14 @@
 #create-policy-button{
 	grid-area: cpb;
 	align-self: center;
+	justify-self: center;
+	position: relative;
+}
+
+#circular-progress{
+	position: absolute;
+	top: 21%;
+	left: 44%;
 }
 
 #form-inputs-item{
@@ -157,6 +167,14 @@
 .reload {
 	grid-area: reload;
 	place-self: center;
+	position: relative;
+}
+
+.loadingFab{
+	position: absolute;
+	bottom: -10%;
+	left: -10%;
+	z-index: 30;
 }
 
 .info-table{

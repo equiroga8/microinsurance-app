@@ -9,7 +9,7 @@ function PolicyList(props) {
 	  	 	
 	        <GridList spacing={24} cols={1} id="policylist">
 	         <GridListTile key="Subheader" style={{ height: 'auto' }}>
-          		<Header title={props.headerTitle} />
+          		<Header title={props.headerTitle} align="center" />
         	</GridListTile>
 	          {props.policyList.map((policy, index) => {
 	          	return <GridListTile key={index} style={{ height: 'auto', width: '424px'}}>
@@ -20,7 +20,8 @@ function PolicyList(props) {
 	          	 	reloadDisabled={props.reloadDisabled}
 	          	 	buttonText={props.buttonText}
 	          	 	isInsurer={props.isInsurer}
-	          	 	/> 
+	          	 	setRefreshPolicies={props.setRefreshPolicies}
+	          	 /> 
 	          	</GridListTile>
 	          })}
 	        </GridList>

@@ -101,6 +101,10 @@ async function publishFlightRecord(tx) {
         flightRecord.flightStatus = tx.updatedFlightStatus;
         await flightRecordAssetRegistry.add(flightRecord);
     }
+
+    let flightRecordUpdatedEvent = factory.newEvent('org.insurance', 'FlightRecordUpdated');
+    flightRecordUpdatedEvent.flightRecordId = tx.flightRecordId;
+    emit(flightRecordUpdatedEvent);
 }
 
 /**

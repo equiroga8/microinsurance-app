@@ -61,7 +61,7 @@ class OracleListener{
     try {
       let response = await request(requestOptions);
       this.apiKey = response.access_token;
-      console.log(chalk.green.bold('Retrieved API key'));
+      console.log(chalk.green.bold(`Retrieved API key: ${this.apiKey}`));
     } catch(error) {
       console.log('ERROR: ' + error);
     }
@@ -74,7 +74,7 @@ class OracleListener{
     var getOptions = {
       uri: 'https://api.lufthansa.com/v1/operations/flightstatus/' + flightDesignator + '/' + departureDate,
       headers: {
-        'Authorization': 'Bearer mvy58stnrgek5tsj2gpwd52n', // + this.apiKey,
+        'Authorization': 'Bearer '+ this.apiKey,
         'Accept': 'application/json'
       },
       json: true
@@ -168,9 +168,7 @@ class OracleListener{
 
         let flightStatus =  await this.getFlightStatus(flightDesignator, departureDate);
 
-        await this.publishFlightRecord(evt.flightRecordId, flightStatus);
-        
-        console.log('Oracle query event registered with flightRecordId: '+ chalk.blue(evt.flightRecordId));            
+        await this.publishFlightRecord(evt.flightRecordId, flightStatus);           
       }
       
     });
@@ -181,4 +179,5 @@ class OracleListener{
 
 var oracleListener = new OracleListener();
 oracleListener.init();
+oracleListener.getLHAccessToken();
 oracleListener.listen();
