@@ -48,7 +48,7 @@ function InsureeContent(props) {
         <div id="create-form-item"> 
         <PolicyForm  
           setRefreshInsuree={props.setRefreshInsuree}
-          refreshInsuree={props.setRefreshInsuree} 
+          refreshInsuree={props.refreshInsuree} 
           setRefreshPolicies={props.setRefreshPolicies}
           refreshPolicies={props.refreshPolicies}
         />
@@ -63,7 +63,7 @@ function InsureeContent(props) {
           buttonText="Policy pending" 
           isInsurer={props.isInsurer}
           setRefreshParticipant={props.setRefreshInsuree}
-          refreshParticipant={props.setRefreshInsuree}
+          refreshParticipant={props.refreshInsuree}
           setRefreshPolicies={props.setRefreshPolicies}
           refreshPolicies={props.refreshPolicies}
         />
@@ -77,7 +77,7 @@ function InsureeContent(props) {
           buttonText="Finalize Policy" 
           isInsurer={props.isInsurer}
           setRefreshParticipant={props.setRefreshInsuree}
-          refreshParticipant={props.setRefreshInsuree}
+          refreshParticipant={props.refreshInsuree}
           setRefreshPolicies={props.setRefreshPolicies}
           refreshPolicies={props.refreshPolicies}
         />
@@ -91,7 +91,7 @@ function InsureeContent(props) {
           isInsurer={props.isInsurer} 
           buttonText={false}
           setRefreshParticipant={props.setRefreshInsuree}
-          refreshParticipant={props.setRefreshInsuree}
+          refreshParticipant={props.refreshInsuree}
           setRefreshPolicies={props.setRefreshPolicies}
           refreshPolicies={props.refreshPolicies}
         />

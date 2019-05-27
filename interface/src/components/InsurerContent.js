@@ -55,7 +55,7 @@ function InsurerContent(props) {
           buttonText="Accept policy" 
           isInsurer={props.isInsurer}
           setRefreshParticipant={props.setRefreshInsurer}
-          refreshParticipant={props.setRefreshInsurer}
+          refreshParticipant={props.refreshInsurer}
           setRefreshPolicies={props.setRefreshPolicies}
           refreshPolicies={props.refreshPolicies}
         />
@@ -68,7 +68,7 @@ function InsurerContent(props) {
           buttonText="Finalize policy" 
           isInsurer={props.isInsurer}
           setRefreshParticipant={props.setRefreshInsurer}
-          refreshParticipant={props.setRefreshInsurer}
+          refreshParticipant={props.refreshInsurer}
           setRefreshPolicies={props.setRefreshPolicies}
           refreshPolicies={props.refreshPolicies}        
         />
@@ -82,7 +82,7 @@ function InsurerContent(props) {
           buttonText={false} 
           isInsurer={props.isInsurer}
           setRefreshParticipant={props.setRefreshInsurer}
-          refreshParticipant={props.setRefreshInsurer}
+          refreshParticipant={props.refreshInsurer}
           setRefreshPolicies={props.setRefreshPolicies}
           refreshPolicies={props.refreshPolicies}
         />
