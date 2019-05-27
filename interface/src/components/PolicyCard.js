@@ -13,9 +13,9 @@ function extractId(id){
 
 function PolicyCard(props) {
   
-  const [raised, toggleRaised] = useState(false);
   const [loadingFab, setLoadingFab] = useState(false);
   const [webSocket, setWebSocket] = useState(false);
+  const [loadingButton, setLoadingButton] = useState(false);
 
   async function callOracle() {
     setLoadingFab(true);
@@ -54,10 +54,10 @@ function PolicyCard(props) {
   } 
 
   function handleQuery(data){
-    console.log(`Handle Query ${data}`);
-    if (data.$class === "org.insurance.FlightRecordUpdated"){
-      updateFlightStatus();
+    console.log(typeof JSON.parse(data));
+    if (JSON.parse(data).$class === "org.insurance.FlightRecordUpdated"){
       setWebSocket(false);
+      updateFlightStatus(); 
     }
   } 
 
@@ -77,9 +77,45 @@ function PolicyCard(props) {
     try {
       let response = await request(requestOptions);
       if (response.transactionId){
-        console.log(response.transactionId);
+        console.log("updating flight status", response.transactionId);
         setLoadingFab(false);
-        props.setRefreshPolicies(true);
+        props.setRefreshPolicies(!props.refreshPolicies);
+      }
+      
+    } catch(error) {
+      console.log('ERROR: ' + error);
+    }
+  }
+
+  function handleButtonClick(){
+    setLoadingButton(true);
+    let status = props.policy.policyState;
+    if (status === "INITIATED"){
+      modifydelayInsurancePolicy("AcceptDelayInsurancePolicy");
+    } else {
+      modifydelayInsurancePolicy("UpdateDelayInsurancePolicy");
+    }
+  }
+
+  async function modifydelayInsurancePolicy(modifier) {
+    var requestOptions = {
+        encoding: 'utf8',
+        uri: 'http://localhost:3005/api/' + modifier,
+        method: 'POST',
+        form: {
+            "$class": "org.insurance." + modifier,
+             "delayInsurancePolicyId": props.policy.delayInsurancePolicyId
+        },
+        json: true
+    };
+
+    try {
+      let response = await request(requestOptions);
+      if (response.transactionId){
+        console.log("modifying policy", response.transactionId);
+        setLoadingButton(false);
+        props.setRefreshPolicies(!props.refreshPolicies);
+        props.setRefreshParticipant(!props.refreshParticipant);
       }
       
     } catch(error) {
@@ -88,7 +124,7 @@ function PolicyCard(props) {
   }
 
   return (
-    <Card >
+    <Card className="policy-card" >
     <div className="card-container"> 
     	<CardContent className ="card-content">
           <div className="card-content-container">
@@ -151,9 +187,10 @@ function PolicyCard(props) {
           </div>
     	</CardContent>
       	<CardActions className="card-actions">
-       	  <Button size="medium" color="primary" variant="contained" disabled={props.buttonDisabled}>
+       	  <Button size="medium" color="primary" variant="contained" disabled={props.buttonDisabled || loadingButton} onClick={handleButtonClick}>
           		{props.buttonText ? props.buttonText : "Policy " + props.policy.policyState}
         	</Button>
+          {loadingButton && <CircularProgress size={24} className="circular-progress-mod"/>}
       	</CardActions>
     </div> 
     {webSocket && <Websocket url='ws://localhost:3005'

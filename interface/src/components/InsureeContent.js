@@ -15,7 +15,6 @@ function InsureeContent(props) {
   }, [props.refreshPolicies]);
 
    async function getPolicies() {
-    props.setRefreshPolicies(false);
     let getOptions = {
       uri: 'http://localhost:3005/api/queries/selectInsureeDelayInsurancePolicies?insureeId=resource%3Aorg.insurance.Insuree%23john%40jmail.com',
       headers: {
@@ -47,7 +46,12 @@ function InsureeContent(props) {
   return (
       <div id="app-container"> 
         <div id="create-form-item"> 
-        <PolicyForm  setRefreshInsuree={props.setRefreshInsuree} setRefreshPolicies={props.setRefreshPolicies}/>
+        <PolicyForm  
+          setRefreshInsuree={props.setRefreshInsuree}
+          refreshInsuree={props.setRefreshInsuree} 
+          setRefreshPolicies={props.setRefreshPolicies}
+          refreshPolicies={props.refreshPolicies}
+        />
         </div>
 
         <PolicyList 
@@ -58,7 +62,10 @@ function InsureeContent(props) {
           reloadDisabled={false} 
           buttonText="Policy pending" 
           isInsurer={props.isInsurer}
+          setRefreshParticipant={props.setRefreshInsuree}
+          refreshParticipant={props.setRefreshInsuree}
           setRefreshPolicies={props.setRefreshPolicies}
+          refreshPolicies={props.refreshPolicies}
         />
    
         <PolicyList 
@@ -69,7 +76,10 @@ function InsureeContent(props) {
           reloadDisabled={false} 
           buttonText="Finalize Policy" 
           isInsurer={props.isInsurer}
+          setRefreshParticipant={props.setRefreshInsuree}
+          refreshParticipant={props.setRefreshInsuree}
           setRefreshPolicies={props.setRefreshPolicies}
+          refreshPolicies={props.refreshPolicies}
         />
         
         <PolicyList 
@@ -78,10 +88,12 @@ function InsureeContent(props) {
           policyList={getPoliciesByStatus(["CANCELLED","PAIDTOINSUREE", "PAIDTOINSURER"])} 
           buttonDisabled={true} 
           reloadDisabled={true} 
-          buttonText="Finalize policy" 
           isInsurer={props.isInsurer} 
           buttonText={false}
-          setRefreshPolicies={props.setRefreshPolicies} 
+          setRefreshParticipant={props.setRefreshInsuree}
+          refreshParticipant={props.setRefreshInsuree}
+          setRefreshPolicies={props.setRefreshPolicies}
+          refreshPolicies={props.refreshPolicies}
         />
 
     </div>      

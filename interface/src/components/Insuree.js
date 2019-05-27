@@ -14,7 +14,6 @@ function Insuree() {
   useEffect( () =>{ getInsuree();}, [refreshInsuree]);
 
   async function getInsuree() {
-    setRefreshInsuree(false);
     console.log("RefreshingInsuree");
     let getOptions = {
       uri: 'http://localhost:3005/api/Insuree/john%40jmail.com',
@@ -51,7 +50,8 @@ function Insuree() {
      	</AppBar>
      	<InsureeContent 
         isInsurer={false} 
-        setRefreshInsuree={setRefreshInsuree} 
+        setRefreshInsuree={setRefreshInsuree}
+        refreshInsuree={refreshInsuree} 
         setRefreshPolicies={setRefreshPolicies}
         refreshPolicies={refreshPolicies}
       />	

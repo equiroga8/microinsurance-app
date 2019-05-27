@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Typography, Grid, Paper, Button, FormControl, TextField, MenuItem } from '@material-ui/core/';
+import { TextField, MenuItem } from '@material-ui/core/';
 
 function PolicyType() {
 

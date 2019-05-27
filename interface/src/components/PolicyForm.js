@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Header from './Header';
 import PolicyInputs from './PolicyInputs';
 import PolicyType from './PolicyType';
@@ -13,12 +13,33 @@ function PolicyForm(props) {
 
 	const [insurer, setInsurer] = useState("");
 	const [flightDesignator, setFlightDesignator] = useState("");
+	const [insurers, setInsurers] = useState(mockInsurers);
 	const [departureDate, setDepartureDate] = useState(date.setDate(date.getDate() + 1));
 	const [airport, setAirport] = useState("");
 	const [loading, setLoading] = useState(false);
 
 	const [textInputRef, setTextInputRef] = useState(null);
 	
+
+	useEffect(() => {
+		const fetchAllInsurers = async () => {
+			let getOptions = {
+      	uri: 'http://localhost:3005/api/Insurer',
+      		headers: {
+        	'Accept': 'application/json'
+      	},
+      	json: true
+   		};
+    	try {
+	      let response = await request(getOptions);
+	      setInsurers(response);
+    	} catch (error) {
+      	console.log(error);
+    	}
+  	}
+		fetchAllInsurers();
+	}, []);
+
 	const onSubmit = async (e) => {
 		setLoading(true);
 		e.preventDefault();
@@ -49,7 +70,7 @@ function PolicyForm(props) {
             "$class": "org.insurance.CreateDelayInsurancePolicy",
 					  "insuree": "resource:org.insurance.Insuree#john@jmail.com",
 					  "insurer": "resource:org.insurance.Insurer#" + insurer,
-					  "flightDesignator": flightDesignator,
+					  "flightDesignator": flightDesignator.toUpperCase(),
 					  "departureAirport": airport,
 					  "departureDate": (new Date(departureDate)).toISOString()
         },
@@ -58,9 +79,9 @@ function PolicyForm(props) {
   
     try {
       let response = await request(requestOptions);
-      props.setRefreshInsuree(true);
+      props.setRefreshInsuree(!props.refreshInsuree);
       setLoading(false);
-      props.setRefreshPolicies(true);
+      props.setRefreshPolicies(!props.refreshPolicies); 
       if (response.transactionId){
         console.log(response.transactionId);
       }
@@ -91,7 +112,7 @@ function PolicyForm(props) {
 	            	margin="normal"
 	            >
 	          		{
-	          			mockInsurers.map((insurer, index) => {
+	          			insurers.map((insurer, index) => {
 										return <MenuItem key={index} value={insurer.insurerId}>{insurer.name}</MenuItem>
 	          			})
 	          		}

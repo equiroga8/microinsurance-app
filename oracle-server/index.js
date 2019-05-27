@@ -81,7 +81,7 @@ class OracleListener{
     };
     try {
       let response = await request(getOptions);
-      console.log(response.FlightStatusResource.Flights.Flight);
+      console.log("Flight found");
       updatedFlightStatus = this.parseResponse(response.FlightStatusResource.Flights.Flight);
     } catch (error) {
       console.log("No flight found with those parameters");
@@ -116,9 +116,10 @@ class OracleListener{
   }
 
   splitFlightRecordId(flightRecordId) {
-
-    var [flightDesignator] = flightRecordId.match(/[A-Z]{2}\d{3}/);
-    var unformattedDate = flightRecordId.substr(5, 8);
+    var length = flightRecordId.length - 13;
+    var regex = new RegExp("[A-Z]{2}\\d{" + length + "}");
+    var flightDesignator = regex.exec(flightRecordId);
+    var unformattedDate = flightRecordId.substr(2+length, 8);
     var departureDate = unformattedDate.substr(0,4) + '-' + unformattedDate.substr(4,2) + '-' + unformattedDate.substr(6);
     console.log(flightDesignator, departureDate);
     return { flightDesignator, departureDate }
@@ -158,7 +159,7 @@ class OracleListener{
   listen(){
     console.log(chalk.blue('Listening for OracleQuery events:'));
     this.bizNetworkConnection.on('event', async (evt)=>{
-      if (evt.flightRecordId) {
+      if (evt.flightRecordId && evt.$type === "OracleQuery") {
         console.log(chalk.blue('-----------------------------------------------------------'));
         console.log('Oracle query event registered with flightRecordId: '+ chalk.blue(evt.flightRecordId));
 
@@ -174,8 +175,6 @@ class OracleListener{
     });
   }
 }
-
-
 
 var oracleListener = new OracleListener();
 oracleListener.init();

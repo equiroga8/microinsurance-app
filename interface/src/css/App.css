@@ -125,6 +125,10 @@
 
 /*Card*/
 
+.policy-card{
+	margin: 2px;
+}
+
 .card-container{
 	display: grid;
 	grid-template-columns: 180px 220px;
@@ -147,6 +151,12 @@
 .card-actions{
 	grid-area: card-actions;
 	justify-self: center;
+}
+
+.circular-progress-mod{
+	position: absolute;
+	top: 89.6%;
+	left: 68.5%;
 }
 
 .card-content-container{

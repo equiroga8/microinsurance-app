@@ -31,3 +31,5 @@ composer-rest-server --card "admin@insurance-network" --namespaces "never" --por
 4) composer network upgrade -c PeerAdmin@hlfv1 -n insurance-network -V 0.0.3
 5) composer network ping -c admin@insurance-network | grep Business
 
+- __Delete business network card:__
+composer card delete -c admin@insurance-network
