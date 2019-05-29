@@ -3,7 +3,6 @@ import Header from './Header';
 import PolicyInputs from './PolicyInputs';
 import PolicyType from './PolicyType';
 import { Typography, Button, Card, TextField, MenuItem, CircularProgress } from '@material-ui/core/';
-import { unstable_Box as Box } from '@material-ui/core/Box';
 import {mockInsurers} from '../assets/mock-data';
 let request = require('request-promise');
 
@@ -17,8 +16,6 @@ function PolicyForm(props) {
 	const [departureDate, setDepartureDate] = useState(date.setDate(date.getDate() + 1));
 	const [airport, setAirport] = useState("");
 	const [loading, setLoading] = useState(false);
-
-	const [textInputRef, setTextInputRef] = useState(null);
 	
 
 	useEffect(() => {
@@ -104,8 +101,7 @@ function PolicyForm(props) {
 	          		select
 	          		fullWidth
 	          		label="Insurer"
-	          		required
-	          		inputRef={ref => setTextInputRef(ref)}
+	          		required     		
 	          		onChange={e => setInsurer(e.target.value)}
 	            	value={insurer}
 	            	variant="outlined"

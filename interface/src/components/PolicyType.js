@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TextField, MenuItem } from '@material-ui/core/';
 
 function PolicyType() {
 
-		const [textInputRef, setTextInputRef] = useState(null);
 
   return (
         <div id="input-select">
@@ -12,7 +11,7 @@ function PolicyType() {
 	          		fullWidth
 	          		label="Policy Type"
 	          		required
-	          		inputRef={ref => setTextInputRef(ref)}
+	          		
 	            	value="Flight Delay"
 	            	variant="outlined"
 	            	margin="normal"

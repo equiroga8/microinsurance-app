@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TextField, FormControl, MenuItem } from '@material-ui/core/';
 import { MuiPickersUtilsProvider, InlineDatePicker } from "material-ui-pickers";
 import DateFnsUtils from '@date-io/date-fns';
@@ -6,8 +6,6 @@ import {airports} from '../assets/mock-data';
 
 function PolicyInputs(props) {
 
-	const [textInputRef, setTextInputRef] = useState(null);
-	
   return (
 
     <div id="form-inputs-item">
@@ -47,7 +45,6 @@ function PolicyInputs(props) {
 	          		fullWidth
 	          		label="Departure Airport"
 	          		required
-	          		inputRef={ref => setTextInputRef(ref)}
 	          		onChange={e => props.setAirport(e.target.value)}
 	            	value={props.airport}
 	            	variant="outlined"
