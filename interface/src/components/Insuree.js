@@ -5,6 +5,10 @@ import { AppBar, Toolbar, Typography } from '@material-ui/core/';
 import { mockInsuree } from '../assets/mock-data';
 let request = require('request-promise');
 
+
+let insureeId = "carlb@jmail.com";
+
+
 function Insuree() {
 
   const [refreshInsuree, setRefreshInsuree] = useState(false);
@@ -16,7 +20,7 @@ function Insuree() {
   async function getInsuree() {
     console.log("RefreshingInsuree");
     let getOptions = {
-      uri: 'http://localhost:3005/api/Insuree/john%40jmail.com',
+      uri: 'http://localhost:3005/api/Insuree/' + insureeId,
       headers: {
         'Accept': 'application/json'
       },
@@ -48,7 +52,8 @@ function Insuree() {
               </div>
         	</Toolbar>
      	</AppBar>
-     	<InsureeContent 
+     	<InsureeContent
+        insureeId={insureeId} 
         isInsurer={false} 
         setRefreshInsuree={setRefreshInsuree}
         refreshInsuree={refreshInsuree} 

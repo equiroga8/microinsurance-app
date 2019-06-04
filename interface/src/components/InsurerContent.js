@@ -10,12 +10,12 @@ function InsurerContent(props) {
 
   useEffect( () =>{ 
     getPolicies();
-    console.log("useEffect policies");
+
   }, [props.refreshPolicies]);
 
    async function getPolicies() {
     let getOptions = {
-      uri: 'http://localhost:3005/api/queries/selectInsurerDelayInsurancePolicies?insureeId=resource%3Aorg.insurance.Insurer%23admin%40safeflight.com',
+      uri: 'http://localhost:3005/api/queries/selectInsurerDelayInsurancePolicies?insureeId=resource%3Aorg.insurance.Insurer%23' + props.insurerId,
       headers: {
         'Accept': 'application/json'
       },

@@ -167,7 +167,7 @@ class OracleListener{
 
         let { flightDesignator, departureDate } = flightDetails;
 
-        let flightStatus =  await this.getFlightStatus(flightDesignator, departureDate);
+        let flightStatus =  constants.ON_SCHEDULE //await this.getFlightStatus(flightDesignator, departureDate);
 
         await this.publishFlightRecord(evt.flightRecordId, flightStatus);           
       }

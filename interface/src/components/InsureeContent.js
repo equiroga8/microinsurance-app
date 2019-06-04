@@ -16,7 +16,7 @@ function InsureeContent(props) {
 
    async function getPolicies() {
     let getOptions = {
-      uri: 'http://localhost:3005/api/queries/selectInsureeDelayInsurancePolicies?insureeId=resource%3Aorg.insurance.Insuree%23john%40jmail.com',
+      uri: 'http://localhost:3005/api/queries/selectInsureeDelayInsurancePolicies?insureeId=resource%3Aorg.insurance.Insuree%23' + props.insureeId,
       headers: {
         'Accept': 'application/json'
       },
@@ -46,7 +46,8 @@ function InsureeContent(props) {
   return (
       <div id="app-container"> 
         <div id="create-form-item"> 
-        <PolicyForm  
+        <PolicyForm 
+          insureeId={props.insureeId} 
           setRefreshInsuree={props.setRefreshInsuree}
           refreshInsuree={props.refreshInsuree} 
           setRefreshPolicies={props.setRefreshPolicies}

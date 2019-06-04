@@ -18,15 +18,15 @@ function PolicyInputs(props) {
 					onChange={e => props.setFlightDesignator(e.target.value)} 
 	          		id="flight-designator" 
 	          		label="Flight designator" 
-	          		autoComplete="no" 
+	          		autoComplete="off" 
 	          	/>
 			</FormControl>
 			<FormControl id="date-input">
 			    <div className="picker">
 			    	<MuiPickersUtilsProvider utils={DateFnsUtils}>
         				<InlineDatePicker
-        					minDate={props.date}
-        					maxDate={new Date().setDate(props.date.getDate() + 14)}
+        					minDate={new Date().setDate(props.date.getDate())}
+        					maxDate={new Date().setDate(props.date.getDate() + 7)}
 					        keyboard
 					        clearable
 					        variant="outlined"

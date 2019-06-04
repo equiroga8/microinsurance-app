@@ -12,19 +12,43 @@
 //Insuree participant
 {
   "$class": "org.insurance.CreateInsuree",
-  "email": "john@jmail.com",
-  "firstName": "John",
-  "lastName": "Doe"
+  "email": "carlb@jmail.com",
+  "firstName": "Carl",
+  "lastName": "Bosch"
+}
+
+{
+  "$class": "org.insurance.CreateInsuree",
+  "email": "alant@jmail.com",
+  "firstName": "Alan",
+  "lastName": "Turing"
 }
 
 
 // Insurer participant
 {
   "$class": "org.insurance.CreateInsurer",
-  "email": "admin@safeflight.com",
-  "name": "Safe Flight"
+  "email": "admin@saferdelay.com",
+  "name": "Safer Delay"
 }
 
+{
+  "$class": "org.insurance.CreateInsurer",
+  "email": "admin@flightmatic.com",
+  "name": "Flightmatic"
+}
+
+{
+  "$class": "org.insurance.CreateInsurer",
+  "email": "admin@jetcation.com",
+  "name": "Jetcation"
+}
+
+{
+  "$class": "org.insurance.CreateInsurer",
+  "email": "admin@interflight.com",
+  "name": "InterFlight"
+}
 
 // publish flight record
 {

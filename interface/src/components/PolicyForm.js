@@ -13,7 +13,7 @@ function PolicyForm(props) {
 	const [insurer, setInsurer] = useState("");
 	const [flightDesignator, setFlightDesignator] = useState("");
 	const [insurers, setInsurers] = useState(mockInsurers);
-	const [departureDate, setDepartureDate] = useState(date.setDate(date.getDate() + 1));
+	const [departureDate, setDepartureDate] = useState(date.setDate(date.getDate() - 3));
 	const [airport, setAirport] = useState("");
 	const [loading, setLoading] = useState(false);
 	
@@ -65,7 +65,7 @@ function PolicyForm(props) {
         method: 'POST',
         form: {
             "$class": "org.insurance.CreateDelayInsurancePolicy",
-					  "insuree": "resource:org.insurance.Insuree#john@jmail.com",
+					  "insuree": "resource:org.insurance.Insuree#" + props.insureeId,
 					  "insurer": "resource:org.insurance.Insurer#" + insurer,
 					  "flightDesignator": flightDesignator.toUpperCase(),
 					  "departureAirport": airport,
@@ -131,7 +131,7 @@ function PolicyForm(props) {
 			</div>
 			<div id="info-premium">
 			 <Typography  
-			 	color="inherit" variant="subtitle2">*$10 dollars will be discounted from your balance</Typography>
+			 	color="inherit" variant="subtitle2">*$10 dollars will be discounted from your balance for a $90 coverage</Typography>
 			</div>
 			</form>
 	     </Card>
