@@ -19,7 +19,7 @@
     "dotenv": "^7.0.0",
     "eslint": "^5.16.0",
     "mkdirp": "^0.5.1",
-    "mocha": "^6.1.4",
+    "mocha": "^10.2.0",
     "moment": "^2.24.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
